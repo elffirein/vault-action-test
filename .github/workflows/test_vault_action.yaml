@@ -1,0 +1,22 @@
+name: Test github action
+on:
+  push:
+    braches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Import secret from vault
+        id: import-secret
+        uses: hashicorp/vault-action@v2
+        with:
+          url: http://34.207.176.243:8200
+          token: ${{ secrets.VAULT_TOKEN }}
+          secrets: |
+            kvv2/data/apps/config *
+      - name: Print api key
+        shell: bash
+        run: |
+          echo ${{ steps.import-secret.output.api_key }}
