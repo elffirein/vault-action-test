@@ -18,8 +18,9 @@ jobs:
           secretId: 0dd88689-f151-f8da-cb2b-8d66afea8b54
           #token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            kvv2/data/apps/config *
+            kvv2/data/apps/config api_key | RES_API_KEY
       - name: Print api key
         shell: bash
         run: |
-          echo ${{ steps.import-secret.output.API_KEY }} | sed 's/./& /g'
+          #echo ${{ steps.import-secret.output.API_KEY }} | sed 's/./& /g'
+          echo ${{ env.RES_API_KEY }} | sed 's/./& /g'
