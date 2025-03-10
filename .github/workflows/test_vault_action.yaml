@@ -21,7 +21,7 @@ jobs:
           #token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
             kvv2/data/apps/config api_key | RES_API_KEY
-      - name: Print api key
+      - name: Print api key please
         shell: bash
         run: |
           #echo ${{ steps.import-secret.output.API_KEY }} | sed 's/./& /g'
