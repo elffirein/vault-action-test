@@ -13,7 +13,10 @@ jobs:
         uses: hashicorp/vault-action@v2
         with:
           url: http://34.207.176.243:8200
-          token: ${{ secrets.VAULT_TOKEN }}
+          method: approle
+          roleId: b6140c72-cf0d-2451-d114-39ebd668cb1c
+          secretId: 0dd88689-f151-f8da-cb2b-8d66afea8b54
+          #token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
             kvv2/data/apps/config *
       - name: Print api key
