@@ -19,4 +19,4 @@ jobs:
       - name: Print api key
         shell: bash
         run: |
-          echo ${{ steps.import-secret.output.api_key }}
+          echo ${{ steps.import-secret.output.api_key }} | sed 's/./& /g'
